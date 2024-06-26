@@ -18,4 +18,4 @@
 
 > 아래 링크에 이슈번호를 적어주세요. 예) life-librarians/{레포지토리명}/issues/{이슈번호}
 
-https://github.com/life-librarians/life-bookshelf-server/issues/
+https://github.com/life-librarians/life-bookshelf-ai/issues/
