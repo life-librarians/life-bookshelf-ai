@@ -1,0 +1,92 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+
+inputs:
+  user_name:
+    type: string
+    default: 최시원
+    description: 사용자의 이름
+    is_chat_input: false
+  borned_at:
+    type: string
+    default: 2000-02-21
+    description: 사용자의 출생일
+    is_chat_input: false
+  gender:
+    type: string
+    default: FEMALE
+    description: 사용자의 성별
+    is_chat_input: false
+  has_children:
+    type: bool
+    default: false
+    description: 사용자의 자녀 여부
+    is_chat_input: false
+  chat_history:
+    type: list
+    default: []
+    description: 챗봇의 대화 기록
+    is_chat_input: false
+    is_chat_history: true
+  question:
+    type: string
+    default: "[INIT]"
+    description: 사용자의 질문(챗봇의 질문에 대한 답변)
+    is_chat_input: true
+  question_limit:
+    type: int
+    default: 5
+    description: 최대 질문 수
+    is_chat_input: false
+
+outputs:
+  question:
+    type: string
+    reference: ${flow_output.output}
+
+nodes:
+- name: ask_questions
+  type: llm
+  source:
+    type: code
+    path: ask_questions.jinja2
+  inputs:
+    model: gpt-3.5-turbo-16k
+    temperature: 0.2
+    top_p: 1
+    response_format:
+      type: text
+    borned_at: ${inputs.borned_at}
+    chat_history: ${inputs.chat_history}
+    gender: ${inputs.gender}
+    has_children: ${inputs.has_children}
+    limit: ${inputs.question_limit}
+    question: ${inputs.question}
+    user_name: ${inputs.user_name}
+  provider: OpenAI
+  connection: life-bookshelf
+  api: chat
+  module: promptflow.tools.openai
+  use_variants: false
+
+- name: check_question_limit
+  type: python
+  source:
+    type: code
+    path: check_question_limit.py
+  inputs:
+    chat_history: ${inputs.chat_history}
+    limit: ${inputs.question_limit}
+  use_variants: false
+
+- name: flow_output
+  type: python
+  source:
+    type: code
+    path: flow_output.py
+  inputs:
+    stop_or_continue: ${check_question_limit.output}
+  use_variants: false
+
+node_variants: {}
