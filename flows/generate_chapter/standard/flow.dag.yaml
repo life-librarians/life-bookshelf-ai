@@ -1,0 +1,54 @@
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  user_name:
+    type: string
+    default: 최시원
+    description: 사용자의 이름
+    is_chat_input: false
+  borned_at:
+    type: string
+    default: 2000-02-21
+    description: 사용자의 출생일
+    is_chat_input: false
+  gender:
+    type: string
+    default: FEMALE
+    description: 사용자의 성별
+    is_chat_input: false
+  has_children:
+    type: string
+    default: no
+    description: 사용자의 자녀 여부 (yes/no)
+    is_chat_input: false
+  selected_theme:
+    type: string
+    default: childhood
+    description: 사용자가 선택한 주제
+    is_chat_input: false
+outputs:
+  chapter_timeline:
+    type: string
+    reference: ${call_llm.output}
+nodes:
+- name: generate_chapter
+  type: prompt
+  source:
+    type: code
+    path: generate_chapter.jinja2
+  inputs:
+    user_name: ${inputs.user_name}
+    borned_at: ${inputs.borned_at}
+    gender: ${inputs.gender}
+    has_children: ${inputs.has_children}
+    selected_theme: ${inputs.selected_theme}
+- name: call_llm
+  type: python
+  source:
+    type: code
+    path: call_llm.py
+  inputs:
+    chapter_timeline: ${generate_chapter.output}
+    deployment_name: gpt-3.5-turbo-instruct
+    max_tokens: 2048
+    user: ${inputs.user_name}
