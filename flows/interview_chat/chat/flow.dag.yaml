@@ -39,12 +39,10 @@ inputs:
     default: 5
     description: 최대 질문 수
     is_chat_input: false
-
 outputs:
   question:
     type: string
     reference: ${flow_output.output}
-
 nodes:
 - name: ask_questions
   type: llm
@@ -53,23 +51,21 @@ nodes:
     path: ask_questions.jinja2
   inputs:
     model: gpt-3.5-turbo-16k
-    temperature: 0.2
+    temperature: 0.4
     top_p: 1
     response_format:
       type: text
+    question: ${inputs.question}
+    user_name: ${inputs.user_name}
     borned_at: ${inputs.borned_at}
-    chat_history: ${inputs.chat_history}
     gender: ${inputs.gender}
     has_children: ${inputs.has_children}
     limit: ${inputs.question_limit}
-    question: ${inputs.question}
-    user_name: ${inputs.user_name}
+    chat_history: ${inputs.chat_history}
   provider: OpenAI
   connection: life-bookshelf
   api: chat
   module: promptflow.tools.openai
-  use_variants: false
-
 - name: check_question_limit
   type: python
   source:
@@ -78,7 +74,6 @@ nodes:
   inputs:
     chat_history: ${inputs.chat_history}
     limit: ${inputs.question_limit}
-
 - name: flow_output
   type: python
   source:
@@ -87,5 +82,3 @@ nodes:
   inputs:
     stop_or_continue: ${check_question_limit.output}
     question: ${ask_questions.output}
-
-node_variants: {}
