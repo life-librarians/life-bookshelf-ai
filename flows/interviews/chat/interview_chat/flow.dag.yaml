@@ -44,41 +44,41 @@ outputs:
     type: string
     reference: ${flow_output.output}
 nodes:
-- name: ask_questions
-  type: llm
-  source:
-    type: code
-    path: ask_questions.jinja2
-  inputs:
-    model: gpt-3.5-turbo-16k
-    temperature: 0.4
-    top_p: 1
-    response_format:
-      type: text
-    question: ${inputs.question}
-    user_name: ${inputs.user_name}
-    borned_at: ${inputs.borned_at}
-    gender: ${inputs.gender}
-    has_children: ${inputs.has_children}
-    limit: ${inputs.question_limit}
-    chat_history: ${inputs.chat_history}
-  provider: OpenAI
-  connection: life-bookshelf
-  api: chat
-  module: promptflow.tools.openai
-- name: check_question_limit
-  type: python
-  source:
-    type: code
-    path: check_question_limit.py
-  inputs:
-    chat_history: ${inputs.chat_history}
-    limit: ${inputs.question_limit}
-- name: flow_output
-  type: python
-  source:
-    type: code
-    path: flow_output.py
-  inputs:
-    stop_or_continue: ${check_question_limit.output}
-    question: ${ask_questions.output}
+  - name: ask_questions
+    type: llm
+    source:
+      type: code
+      path: ask_questions.jinja2
+    inputs:
+      model: gpt-3.5-turbo-16k
+      temperature: 0.4
+      top_p: 1
+      response_format:
+        type: text
+      question: ${inputs.question}
+      user_name: ${inputs.user_name}
+      borned_at: ${inputs.borned_at}
+      gender: ${inputs.gender}
+      has_children: ${inputs.has_children}
+      limit: ${inputs.question_limit}
+      chat_history: ${inputs.chat_history}
+    provider: OpenAI
+    connection: open_ai_connection
+    api: chat
+    module: promptflow.tools.openai
+  - name: check_question_limit
+    type: python
+    source:
+      type: code
+      path: check_question_limit.py
+    inputs:
+      chat_history: ${inputs.chat_history}
+      limit: ${inputs.question_limit}
+  - name: flow_output
+    type: python
+    source:
+      type: code
+      path: flow_output.py
+    inputs:
+      stop_or_continue: ${check_question_limit.output}
+      question: ${ask_questions.output}

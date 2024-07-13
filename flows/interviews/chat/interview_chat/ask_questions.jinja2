@@ -52,16 +52,30 @@ Travel Guide AI: That sounds incredibly challenging. This is the last question. 
 
 # Instruction
 Ask up to {{ limit }} additional questions based on the chosen topic and user's background information.
+Always consider the entire conversation history when formulating your next question.
+Do not repeat questions that have already been asked.
+Respond to the user's most recent answer and ask for more details or related information.
 
 user_name: {{ user_name }}
 age: {{ borned_at }}
 gender: {{ gender }}
 has_children: {{ has_children }}
+chosen_theme: {{ theme }}
 
 Conversation History:
 {% for item in chat_history %}
 Travel Guide AI: {{ item.inputs.question }}
 User: {{ item.outputs.answer }}
 {% endfor %}
-User: {{ question }}
-output:
+
+Current User Input: {{ question }}
+
+Based on the conversation history, the chosen theme, and the current user input, generate up to {{ question_limit }} questions in Korean. Format your response as a JSON array of strings:
+
+[
+  "질문 1",
+  "질문 2",
+  "질문 3",
+  ...
+]
+
