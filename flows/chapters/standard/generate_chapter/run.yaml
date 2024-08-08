@@ -8,7 +8,10 @@ environment_variables:
   AZURE_OPENAI_API_TYPE: azure
 column_mapping:
   user_name: ${data.user_name}
-  borned_at: ${data.borned_at}
+  date_of_birth: ${data.date_of_birth}
   gender: ${data.gender}
   has_children: ${data.has_children}
-  selected_theme: ${data.selected_theme}
+  occupation: ${data.occupation}
+  education_level: ${data.education_level}
+  marital_status: ${data.marital_status}
+  major_achievements: ${data.major_achievements}

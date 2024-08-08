@@ -6,7 +6,7 @@ inputs:
     default: 최시원
     description: 사용자의 이름
     is_chat_input: false
-  borned_at:
+  date_of_birth:
     type: string
     default: 2000-02-21
     description: 사용자의 출생일
@@ -21,34 +21,57 @@ inputs:
     default: no
     description: 사용자의 자녀 여부 (yes/no)
     is_chat_input: false
-  selected_theme:
+  occupation:
     type: string
-    default: childhood
-    description: 사용자가 선택한 주제
+    default: 프로그래머
+    description: 사용자의 직업
+    is_chat_input: false
+  education_level:
+    type: string
+    default: 대학교 재학
+    description: 사용자의 교육 수준
+    is_chat_input: false
+  marital_status:
+    type: string
+    default: 미혼
+    description: 사용자의 결혼 여부
+    is_chat_input: false
+  major_achievements:
+    type: list
+    default:
+    - 졸업
+    - 취업
+    description: 사용자의 주요 성취
+    is_chat_input: false
+  autobiography_theme:
+    type: string
+    default: 인생사
+    description: 자서전의 주제
     is_chat_input: false
 outputs:
   chapter_timeline:
-    type: string
-    reference: ${call_llm.output}
+    type: object
+    reference: ${generate_chapter.output}
 nodes:
 - name: generate_chapter
-  type: prompt
+  type: llm
   source:
     type: code
     path: generate_chapter.jinja2
   inputs:
-    user_name: ${inputs.user_name}
-    borned_at: ${inputs.borned_at}
+    model: gpt-4o
+    temperature: 0.4
+    top_p: 1
+    response_format:
+      type: json_object
     gender: ${inputs.gender}
+    occupation: ${inputs.occupation}
+    user_name: ${inputs.user_name}
+    date_of_birth: ${inputs.date_of_birth}
     has_children: ${inputs.has_children}
-    selected_theme: ${inputs.selected_theme}
-- name: call_llm
-  type: python
-  source:
-    type: code
-    path: call_llm.py
-  inputs:
-    chapter_timeline: ${generate_chapter.output}
-    deployment_name: gpt-3.5-turbo-instruct
-    max_tokens: 2048
-    user: ${inputs.user_name}
+    education_level: ${inputs.education_level}
+    marital_status: ${inputs.marital_status}
+    major_achievements: ${inputs.major_achievements}
+    autobiography_theme: ${inputs.autobiography_theme}
+  connection: open_ai_connection
+  api: chat

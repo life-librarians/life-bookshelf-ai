@@ -17,28 +17,36 @@ from interviews.interview_chat.router import (
     router as interviews_request_interview_chat_router,
 )
 
+from promptflow.connections import AzureOpenAIConnection, OpenAIConnection
+from promptflow.client import PFClient
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
-def get_client():
-    api_key = os.environ["AZURE_OPENAI_API_KEY"]
-    conn = dict(
-        api_key=os.environ["AZURE_OPENAI_API_KEY"],
-    )
+def create_connection():
+    api_key = os.environ.get("AZURE_OPENAI_API_KEY")
+    connection = None
     if api_key.startswith("sk-"):
-        from openai import OpenAI as Client
+        connection = OpenAIConnection(
+            name="open_ai_connection",
+            api_key=os.environ.get("AZURE_OPENAI_API_KEY"),
+        )
     else:
-        from openai import AzureOpenAI as Client
-
-        conn.update(
+        connection = AzureOpenAIConnection(
+            name="open_ai_connection",
+            api_key=os.environ.get("AZURE_OPENAI_API_KEY"),
+            api_base=os.environ.get("AZURE_OPENAI_API_BASE"),
             azure_endpoint=os.environ.get("AZURE_OPENAI_API_BASE", "azure"),
             api_version=os.environ.get(
                 "AZURE_OPENAI_API_VERSION", "2023-07-01-preview"
             ),
         )
-    return Client(**conn)
+
+    pf = PFClient()
+    conn = pf.connections.create_or_update(connection)
+    print(f"Successfully created connection {conn}")
 
 
 app = FastAPI(
@@ -53,6 +61,8 @@ app.include_router(interviews_generate_interview_question_router)
 app.include_router(interviews_request_interview_chat_router)
 
 if __name__ == "__main__":
+    create_connection()
+
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0", port=3000)

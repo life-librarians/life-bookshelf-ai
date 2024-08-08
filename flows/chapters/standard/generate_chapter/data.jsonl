@@ -1,114 +1,41 @@
-{"user_name": "김민수", "borned_at": "1982-05-04", "gender": "MALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "이준호", "borned_at": "2000-05-10", "gender": "MALE", "has_children": "yes", "selected_theme": "personal growth"}
-{"user_name": "박지영", "borned_at": "1971-05-04", "gender": "FEMALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "서영호", "borned_at": "1997-01-02", "gender": "MALE", "has_children": "yes", "selected_theme": "adventure"}
-{"user_name": "서영호", "borned_at": "1988-10-26", "gender": "MALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "박지영", "borned_at": "1977-02-28", "gender": "FEMALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "김하나", "borned_at": "1979-08-29", "gender": "FEMALE", "has_children": "no", "selected_theme": "travel"}
-{"user_name": "조민석", "borned_at": "1974-05-04", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "박지영", "borned_at": "2002-09-25", "gender": "FEMALE", "has_children": "no", "selected_theme": "adventure"}
-{"user_name": "조민석", "borned_at": "1973-07-15", "gender": "MALE", "has_children": "no", "selected_theme": "personal growth"}
-{"user_name": "최수진", "borned_at": "1993-04-07", "gender": "FEMALE", "has_children": "yes", "selected_theme": "retirement"}
-{"user_name": "이준호", "borned_at": "1986-11-28", "gender": "MALE", "has_children": "yes", "selected_theme": "travel"}
-{"user_name": "이영희", "borned_at": "1973-09-21", "gender": "FEMALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "정우성", "borned_at": "1971-12-29", "gender": "MALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "정수빈", "borned_at": "1993-02-10", "gender": "FEMALE", "has_children": "yes", "selected_theme": "family"}
-{"user_name": "윤지민", "borned_at": "1981-11-24", "gender": "MALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "유지은", "borned_at": "1982-10-14", "gender": "FEMALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "김민수", "borned_at": "1975-07-27", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "백하늘", "borned_at": "1976-10-13", "gender": "FEMALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "조민석", "borned_at": "1998-01-22", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "조민석", "borned_at": "1989-03-03", "gender": "MALE", "has_children": "no", "selected_theme": "career"}
-{"user_name": "정수빈", "borned_at": "1999-07-02", "gender": "FEMALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "박지영", "borned_at": "1981-10-09", "gender": "FEMALE", "has_children": "yes", "selected_theme": "career"}
-{"user_name": "정우성", "borned_at": "1970-07-19", "gender": "MALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "노은지", "borned_at": "1972-03-28", "gender": "FEMALE", "has_children": "yes", "selected_theme": "travel"}
-{"user_name": "조민석", "borned_at": "1970-10-15", "gender": "MALE", "has_children": "no", "selected_theme": "family"}
-{"user_name": "정수빈", "borned_at": "1995-12-17", "gender": "FEMALE", "has_children": "no", "selected_theme": "personal growth"}
-{"user_name": "정수빈", "borned_at": "1974-12-23", "gender": "FEMALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "조민석", "borned_at": "1996-01-09", "gender": "MALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "김하나", "borned_at": "1977-01-18", "gender": "FEMALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "서영호", "borned_at": "1984-04-23", "gender": "MALE", "has_children": "no", "selected_theme": "family"}
-{"user_name": "정우성", "borned_at": "1994-02-07", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "김민수", "borned_at": "1981-07-26", "gender": "MALE", "has_children": "yes", "selected_theme": "retirement"}
-{"user_name": "정우성", "borned_at": "1987-12-15", "gender": "MALE", "has_children": "no", "selected_theme": "adventure"}
-{"user_name": "박지영", "borned_at": "1987-05-22", "gender": "FEMALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "조민석", "borned_at": "1979-08-13", "gender": "MALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "최민호", "borned_at": "1999-10-04", "gender": "MALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "손미라", "borned_at": "1990-08-19", "gender": "FEMALE", "has_children": "yes", "selected_theme": "travel"}
-{"user_name": "정수빈", "borned_at": "1991-06-30", "gender": "FEMALE", "has_children": "yes", "selected_theme": "adventure"}
-{"user_name": "박철수", "borned_at": "1992-08-07", "gender": "MALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "윤지민", "borned_at": "1975-04-06", "gender": "MALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "유지은", "borned_at": "1998-02-12", "gender": "FEMALE", "has_children": "yes", "selected_theme": "hobbies"}
-{"user_name": "서영호", "borned_at": "1985-01-29", "gender": "MALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "이영희", "borned_at": "1985-06-21", "gender": "FEMALE", "has_children": "no", "selected_theme": "travel"}
-{"user_name": "노은지", "borned_at": "1974-08-20", "gender": "FEMALE", "has_children": "no", "selected_theme": "retirement
-
-"}
-{"user_name": "이영희", "borned_at": "1994-03-03", "gender": "FEMALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "유지은", "borned_at": "1984-11-22", "gender": "FEMALE", "has_children": "no", "selected_theme": "career"}
-{"user_name": "조민석", "borned_at": "1972-06-27", "gender": "MALE", "has_children": "no", "selected_theme": "adventure"}
-{"user_name": "유지은", "borned_at": "1970-08-15", "gender": "FEMALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "윤지민", "borned_at": "1991-01-15", "gender": "MALE", "has_children": "no", "selected_theme": "family"}
-{"user_name": "이영희", "borned_at": "1988-03-24", "gender": "FEMALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "김민수", "borned_at": "1996-09-23", "gender": "MALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "정수빈", "borned_at": "1977-06-21", "gender": "FEMALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "조민석", "borned_at": "1991-12-05", "gender": "MALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "정우성", "borned_at": "1994-07-11", "gender": "MALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "박철수", "borned_at": "1982-06-05", "gender": "MALE", "has_children": "no", "selected_theme": "personal growth"}
-{"user_name": "김민수", "borned_at": "1989-11-07", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "조민석", "borned_at": "1992-07-02", "gender": "MALE", "has_children": "yes", "selected_theme": "hobbies"}
-{"user_name": "서영호", "borned_at": "1976-12-23", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "손미라", "borned_at": "1971-09-12", "gender": "FEMALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "이영희", "borned_at": "1970-11-29", "gender": "FEMALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "이준호", "borned_at": "1995-08-31", "gender": "MALE", "has_children": "yes", "selected_theme": "hobbies"}
-{"user_name": "손미라", "borned_at": "1987-09-14", "gender": "FEMALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "유지은", "borned_at": "1976-01-07", "gender": "FEMALE", "has_children": "yes", "selected_theme": "adventure"}
-{"user_name": "조민석", "borned_at": "1986-05-20", "gender": "MALE", "has_children": "yes", "selected_theme": "family"}
-{"user_name": "유지은", "borned_at": "1983-10-15", "gender": "FEMALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "최수진", "borned_at": "1972-01-09", "gender": "FEMALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "서영호", "borned_at": "1973-12-14", "gender": "MALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "백하늘", "borned_at": "1971-02-04", "gender": "FEMALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "윤지민", "borned_at": "1993-03-27", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "노은지", "borned_at": "1996-11-24", "gender": "FEMALE", "has_children": "yes", "selected_theme": "health"}
-{"user_name": "윤지민", "borned_at": "1978-09-15", "gender": "MALE", "has_children": "yes", "selected_theme": "health"}
-{"user_name": "이영희", "borned_at": "1996-12-14", "gender": "FEMALE", "has_children": "no", "selected_theme": "personal growth"}
-{"user_name": "이준호", "borned_at": "1987-08-17", "gender": "MALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "최민호", "borned_at": "1992-12-09", "gender": "MALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "유지은", "borned_at": "1993-06-20", "gender": "FEMALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "노은지", "borned_at": "1985-10-22", "gender": "FEMALE", "has_children": "yes", "selected_theme": "family"}
-{"user_name": "최수진", "borned_at": "1979-07-18", "gender": "FEMALE", "has_children": "yes", "selected_theme": "health"}
-{"user_name": "박철수", "borned_at": "1973-04-28", "gender": "MALE", "has_children": "no", "selected_theme": "personal growth"}
-{"user_name": "서영호", "borned_at": "1999-04-30", "gender": "MALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "정수빈", "borned_at": "1992-01-20", "gender": "FEMALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "정우성", "borned_at": "1977-10-23", "gender": "MALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "박지영", "borned_at": "1992-03-04", "gender": "FEMALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "정수빈", "borned_at": "1978-02-28", "gender": "FEMALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "최수진", "borned_at": "1991-04-11", "gender": "FEMALE", "has_children": "no", "selected_theme": "relationships"}
-{"user_name": "윤지민", "borned_at": "1975-02-14", "gender": "MALE", "has_children": "yes", "selected_theme": "hobbies"}
-{"user_name": "최수진", "borned_at": "1995-11-03", "gender": "FEMALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "백하늘", "borned_at": "1981-04-20", "gender": "FEMALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "손미라", "borned_at": "1993-05-12", "gender": "FEMALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "조민석", "borned_at": "1984-09-09", "gender": "MALE", "has_children": "yes", "selected_theme": "retirement"}
-{"user_name": "이영희", "borned_at": "1991-08-05", "gender": "FEMALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "김하나", "borned_at": "1989-01-26", "gender": "FEMALE", "has_children": "yes", "selected_theme": "family"}
-{"user_name": "박지영", "borned_at": "1970-09-12", "gender": "FEMALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "이준호", "borned_at": "1970-06-05", "gender": "MALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "박지영", "borned_at": "1980-11-08", "gender": "FEMALE", "has_children": "yes", "selected_theme": "family"}
-{"user_name": "서영호", "borned_at": "1994-12-16", "gender": "MALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "최민호", "borned_at": "1981-05-06", "gender": "MALE", "has_children": "yes", "selected_theme": "education"}
-{"user_name": "김민수", "borned_at": "1983-06-15", "gender": "MALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "유지은", "borned_at": "1992-07-21", "gender": "FEMALE", "has_children": "yes", "selected_theme": "family"}
-{"user_name": "최민호", "borned_at": "1984-12-10", "gender": "MALE", "has_children": "no", "selected_theme": "hobbies"}
-{"user_name": "정수빈", "borned_at": "1991-01-18", "gender": "FEMALE", "has_children": "yes", "selected_theme": "retirement"}
-{"user_name": "박철수", "borned_at": "1987-07-08", "gender": "MALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "이영희", "borned_at": "1997-03-06", "gender": "FEMALE", "has_children": "yes", "selected_theme": "adventure"}
-{"user_name": "유지은", "borned_at": "1994-10-25", "gender": "FEMALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "박지영", "borned_at": "1997-04-15", "gender": "FEMALE", "has_children": "yes", "selected_theme": "health"}
-{"user_name": "조민석", "borned_at": "1990-11-30", "gender": "MALE", "has_children": "no", "selected_theme": "retirement"}
-{"user_name": "정수빈", "borned_at": "1999-06-02", "gender": "FEMALE", "has_children": "yes", "selected_theme": "adventure"}
-{"user_name": "박철수", "borned_at": "1971-04-03", "gender": "MALE", "has_children": "no", "selected_theme": "health"}
-{"user_name": "정우성", "borned_at": "1989-12-20", "gender": "MALE", "has_children": "no", "selected_theme": "education"}
-{"user_name": "이준호", "borned_at": "1971-11-21", "gender": "MALE", "has_children": "yes", "selected_theme": "relationships"}
-{"user_name": "손미라", "borned_at": "1977-11-18", "gender": "FEMALE", "has_children": "no", "selected_theme": "travel"}
-{"user_name": "정수빈", "borned_at": "1996-06-13", "gender": "FEMALE", "has_children": "yes", "selected_theme": "personal growth"}
+{"user_name": "김민수", "date_of_birth": "1982-05-04", "gender": "MALE", "has_children": "yes", "occupation": "교사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "논문 발표"}
+{"user_name": "이준호", "date_of_birth": "2000-05-10", "gender": "MALE", "has_children": "yes", "occupation": "학생", "education_level": "고등학교", "marital_status": "미혼", "major_achievements": "수학 경시대회 우승"}
+{"user_name": "박지영", "date_of_birth": "1971-05-04", "gender": "FEMALE", "has_children": "yes", "occupation": "의사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "의학 연구"}
+{"user_name": "서영호", "date_of_birth": "1997-01-02", "gender": "MALE", "has_children": "yes", "occupation": "프로그래머", "education_level": "대학", "marital_status": "미혼", "major_achievements": "앱 개발"}
+{"user_name": "서영호", "date_of_birth": "1988-10-26", "gender": "MALE", "has_children": "yes", "occupation": "디자이너", "education_level": "대학", "marital_status": "기혼", "major_achievements": "디자인 공모전 우승"}
+{"user_name": "박지영", "date_of_birth": "1977-02-28", "gender": "FEMALE", "has_children": "no", "occupation": "작가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "책 출판"}
+{"user_name": "김하나", "date_of_birth": "1979-08-29", "gender": "FEMALE", "has_children": "no", "occupation": "여행가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "여행 블로그 운영"}
+{"user_name": "조민석", "date_of_birth": "1974-05-04", "gender": "MALE", "has_children": "no", "occupation": "화가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "전시회 개최"}
+{"user_name": "박지영", "date_of_birth": "2002-09-25", "gender": "FEMALE", "has_children": "no", "occupation": "학생", "education_level": "고등학교", "marital_status": "미혼", "major_achievements": "과학 경시대회 우승"}
+{"user_name": "조민석", "date_of_birth": "1973-07-15", "gender": "MALE", "has_children": "no", "occupation": "사업가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "회사 설립"}
+{"user_name": "최수진", "date_of_birth": "1993-04-07", "gender": "FEMALE", "has_children": "yes", "occupation": "주부", "education_level": "고등학교", "marital_status": "기혼", "major_achievements": "가정 관리"}
+{"user_name": "이준호", "date_of_birth": "1986-11-28", "gender": "MALE", "has_children": "yes", "occupation": "여행가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "여행 블로그 운영"}
+{"user_name": "이영희", "date_of_birth": "1973-09-21", "gender": "FEMALE", "has_children": "no", "occupation": "교사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "논문 발표"}
+{"user_name": "정우성", "date_of_birth": "1971-12-29", "gender": "MALE", "has_children": "no", "occupation": "의사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "의학 연구"}
+{"user_name": "정수빈", "date_of_birth": "1993-02-10", "gender": "FEMALE", "has_children": "yes", "occupation": "주부", "education_level": "고등학교", "marital_status": "기혼", "major_achievements": "가정 관리"}
+{"user_name": "윤지민", "date_of_birth": "1981-11-24", "gender": "MALE", "has_children": "no", "occupation": "프로그래머", "education_level": "대학", "marital_status": "미혼", "major_achievements": "앱 개발"}
+{"user_name": "유지은", "date_of_birth": "1982-10-14", "gender": "FEMALE", "has_children": "yes", "occupation": "디자이너", "education_level": "대학", "marital_status": "기혼", "major_achievements": "디자인 공모전 우승"}
+{"user_name": "김민수", "date_of_birth": "1975-07-27", "gender": "MALE", "has_children": "no", "occupation": "화가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "전시회 개최"}
+{"user_name": "백하늘", "date_of_birth": "1976-10-13", "gender": "FEMALE", "has_children": "yes", "occupation": "교사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "논문 발표"}
+{"user_name": "조민석", "date_of_birth": "1998-01-22", "gender": "MALE", "has_children": "no", "occupation": "학생", "education_level": "고등학교", "marital_status": "미혼", "major_achievements": "수학 경시대회 우승"}
+{"user_name": "조민석", "date_of_birth": "1989-03-03", "gender": "MALE", "has_children": "no", "occupation": "프로그래머", "education_level": "대학", "marital_status": "미혼", "major_achievements": "앱 개발"}
+{"user_name": "정수빈", "date_of_birth": "1999-07-02", "gender": "FEMALE", "has_children": "no", "occupation": "학생", "education_level": "고등학교", "marital_status": "미혼", "major_achievements": "과학 경시대회 우승"}
+{"user_name": "박지영", "date_of_birth": "1981-10-09", "gender": "FEMALE", "has_children": "yes", "occupation": "의사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "의학 연구"}
+{"user_name": "정우성", "date_of_birth": "1970-07-19", "gender": "MALE", "has_children": "no", "occupation": "교사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "논문 발표"}
+{"user_name": "노은지", "date_of_birth": "1972-03-28", "gender": "FEMALE", "has_children": "yes", "occupation": "여행가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "여행 블로그 운영"}
+{"user_name": "조민석", "date_of_birth": "1970-10-15", "gender": "MALE", "has_children": "no", "occupation": "사업가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "회사 설립"}
+{"user_name": "정수빈", "date_of_birth": "1995-12-17", "gender": "FEMALE", "has_children": "no", "occupation": "학생", "education_level": "고등학교", "marital_status": "미혼", "major_achievements": "수학 경시대회 우승"}
+{"user_name": "정수빈", "date_of_birth": "1974-12-23", "gender": "FEMALE", "has_children": "no", "occupation": "작가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "책 출판"}
+{"user_name": "조민석", "date_of_birth": "1996-01-09", "gender": "MALE", "has_children": "no", "occupation": "프로그래머", "education_level": "대학", "marital_status": "미혼", "major_achievements": "앱 개발"}
+{"user_name": "김하나", "date_of_birth": "1977-01-18", "gender": "FEMALE", "has_children": "no", "occupation": "작가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "책 출판"}
+{"user_name": "서영호", "date_of_birth": "1984-04-23", "gender": "MALE", "has_children": "no", "occupation": "사업가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "회사 설립"}
+{"user_name": "정우성", "date_of_birth": "1994-02-07", "gender": "MALE", "has_children": "no", "occupation": "화가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "전시회 개최"}
+{"user_name": "김민수", "date_of_birth": "1981-07-26", "gender": "MALE", "has_children": "yes", "occupation": "교사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "논문 발표"}
+{"user_name": "정우성", "date_of_birth": "1987-12-15", "gender": "MALE", "has_children": "no", "occupation": "프로그래머", "education_level": "대학", "marital_status": "미혼", "major_achievements": "앱 개발"}
+{"user_name": "박지영", "date_of_birth": "1987-05-22", "gender": "FEMALE", "has_children": "no", "occupation": "의사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "의학 연구"}
+{"user_name": "조민석", "date_of_birth": "1979-08-13", "gender": "MALE", "has_children": "yes", "occupation": "교사", "education_level": "대학원", "marital_status": "기혼", "major_achievements": "논문 발표"}
+{"user_name": "최민호", "date_of_birth": "1999-10-04", "gender": "MALE", "has_children": "yes", "occupation": "프로그래머", "education_level": "대학", "marital_status": "기혼", "major_achievements": "앱 개발"}
+{"user_name": "손미라", "date_of_birth": "1990-08-19", "gender": "FEMALE", "has_children": "yes", "occupation": "여행가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "여행 블로그 운영"}
+{"user_name": "정수빈", "date_of_birth": "1991-06-30", "gender": "FEMALE", "has_children": "yes", "occupation": "작가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "책 출판"}
+{"user_name": "박철수", "date_of_birth": "1982-06-05", "gender": "MALE", "has_children": "no", "occupation": "사업가", "education_level": "대학", "marital_status": "기혼", "major_achievements": "회사 설립"}
+{"user_name": "김민수", "date_of_birth": "1989-11-07", "gender": "MALE", "has_children": "no", "occupation": "화가", "education_level": "대학", "marital_status": "미혼", "major_achievements": "전시회 개최"}
