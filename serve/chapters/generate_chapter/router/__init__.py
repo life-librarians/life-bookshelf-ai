@@ -2,6 +2,7 @@ import json
 
 from fastapi import HTTPException, APIRouter
 from promptflow.core import Flow
+from starlette.responses import StreamingResponse
 
 from chapters.generate_chapter.dto.request import ChapterGenerateRequestDto
 from chapters.generate_chapter.dto.response import (
@@ -23,25 +24,36 @@ def generate_chapters(request: ChapterGenerateRequestDto):
         )
 
     flow = Flow.load("../flows/chapters/standard/generate_chapter/flow.dag.yaml")
-    chapters = flow(
-        gender=request.gender,
-        occupation=request.occupation,
-        user_name=request.user_name,
-        date_of_birth=request.date_of_birth,
-        has_children=request.has_children,
-        education_level=request.education_level,
-        marital_status=request.marital_status,
-        major_achievements=request.major_achievements,
-        autobiography_theme=request.autobiography_theme,
-    )
+    # Collect the results as they are returned by the flow
+    try:
+        result = ""
+        chapters = flow(
+            gender=request.gender,
+            occupation=request.occupation,
+            user_name=request.user_name,
+            date_of_birth=request.date_of_birth,
+            has_children=request.has_children,
+            education_level=request.education_level,
+            marital_status=request.marital_status,
+            major_achievements=request.major_achievements,
+            autobiography_theme=request.autobiography_theme,
+        )
 
-    result = ""
-    for chapter in chapters.get("chapter_timeline"):
-        result += chapter
+        # Directly accumulate chapter content into the result string
+        result = "".join(chapters.get("chapter_timeline", []))
 
-    # JSON 문자열을 객체로 변환
-    parsed_result = json.loads(result)
+        # Parse the accumulated result string into a dictionary
+        parsed_result = json.loads(result)
 
-    # ChapterGenerateResponseDto 객체 생성
-    response = ChapterGenerateResponseDto(**parsed_result)
-    return response
+        # Create and return the response DTO
+        response = ChapterGenerateResponseDto(**parsed_result)
+        return response
+
+    except json.JSONDecodeError:
+        raise HTTPException(
+            status_code=500, detail="Failed to parse the chapter generation result."
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, detail=f"An unexpected error occurred: {str(e)}"
+        )
