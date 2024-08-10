@@ -59,7 +59,7 @@ nodes:
     type: code
     path: generate_chapter.jinja2
   inputs:
-    model: gpt-4o
+    model: gpt-4o-mini
     temperature: 0.4
     top_p: 1
     response_format:
