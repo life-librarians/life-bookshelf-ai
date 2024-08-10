@@ -2,8 +2,6 @@ import json
 
 from fastapi import HTTPException, APIRouter
 from promptflow.core import Flow
-from starlette.responses import StreamingResponse
-
 from chapters.generate_chapter.dto.request import ChapterGenerateRequestDto
 from chapters.generate_chapter.dto.response import (
     ChapterGenerateResponseDto,
@@ -23,10 +21,9 @@ def generate_chapters(request: ChapterGenerateRequestDto):
             status_code=400, detail="Name is required and cannot be empty."
         )
 
-    flow = Flow.load("../flows/chapters/standard/generate_chapter/flow.dag.yaml")
-    # Collect the results as they are returned by the flow
     try:
-        result = ""
+        # Collect the results as they are returned by the flow
+        flow = Flow.load("../flows/chapters/standard/generate_chapter/flow.dag.yaml")
         chapters = flow(
             gender=request.gender,
             occupation=request.occupation,
