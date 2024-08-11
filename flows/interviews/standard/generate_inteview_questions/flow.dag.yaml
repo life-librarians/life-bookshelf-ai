@@ -65,7 +65,6 @@ inputs:
       "title": "20대",
       "description": "대학 생활과 첫 직장 경험"
     }
-
   sub_chapter_info:
     type: object
     properties:
@@ -82,45 +81,21 @@ inputs:
     default: {
       "title": "첫 직장 생활",
       "description": "소프트웨어 회사에서의 첫 직장 경험과 적응 과정"
-    }
+      }
 
-  interview_chat:
-    type: list
-    items:
-      type: object
-      properties:
-        content:
-          type: string
-          default: 회사에서 맡은 첫 프로젝트는 무엇이었고, 어떤 도전이 있었나요?
-          description: 인터뷰 대화 내용
-          is_chat_input: false
-        conversation_type:
-          type: string
-          default: BOT
-          description: 발화자 유형
-          is_chat_input: false
-    default: [
-      {
-        "content": "회사에서 맡은 첫 프로젝트는 무엇이었고, 어떤 도전이 있었나요?",
-        "conversation_type": "BOT"
-      },
-      {
-        "content": "제가 맡은 첫 프로젝트는 온라인 쇼핑몰 구축 프로젝트였습니다. 처음으로 프로젝트를 맡아서 설계부터 개발까지 전반적인 업무를 담당했는데, 기존에 경험이 부족했기 때문에 많은 어려움을 겪었습니다. 특히, 프로젝트 일정이 타이트했기 때문에 개발 과정에서 많은 야근을 했었죠.",
-        "conversation_type": "HUMAN"
-      },
-    ]
 outputs:
-  autobiographical_text:
+  interview_questions:
     type: string
-    reference: ${generate_autobiography.output}
+    reference: ${generate_interview_questions.output}
+
 nodes:
-- name: generate_autobiography
+- name: generate_interview_questions
   type: llm
   source:
     type: code
-    path: generate_autobiography.jinja2
+    path: generate_interview_questions.jinja2
   inputs:
-    model: gpt-4o
+    model: gpt-4o-mini
     temperature: 0.4
     top_p: 1
     response_format:
@@ -128,6 +103,5 @@ nodes:
     user_info: ${inputs.user_info}
     chapter_info: ${inputs.chapter_info}
     sub_chapter_info: ${inputs.sub_chapter_info}
-    interview_chat: ${inputs.interview_chat}
   connection: open_ai_connection
   api: chat
