@@ -10,6 +10,8 @@ router = APIRouter()
 @router.post(
     "/api/v1/interviews/interview-chat",
     response_model=InterviewChatResponseDto,
+    summary="인터뷰 대화 생성",
+    description="대화 히스토리를 토대로 다음 질문을 생성합니다.",
     tags=["인터뷰 (Interview)"],
 )
 def generate_interview_chat():

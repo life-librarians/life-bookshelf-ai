@@ -26,6 +26,8 @@ def proofread_content(content: str) -> List[CorrectionDto]:
     "/api/v1/autobiographies/proofreading",
     response_model=ProofreadingResponseDto,
     tags=["자서전 (Autobiography)"],
+    summary="자서전 교정/교열",
+    description="자서전 내용을 교정하고 교열합니다. 교정 전 후 비교 결과를 배열에 담아 반환합니다.",
 )
 def proofread_autobiography(request: ProofreadingRequestDto):
     # Call the proofreading function

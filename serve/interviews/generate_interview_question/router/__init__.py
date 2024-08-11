@@ -21,6 +21,8 @@ router = APIRouter()
     "/api/v1/interviews/interview-questions",
     dependencies=[Depends(AuthRequired())],
     response_model=InterviewQuestionGenerateResponseDto,
+    summary="인터뷰 질문 생성",
+    description="유저의 정보와 챕터 정보를 입력받아 인터뷰 질문을 생성합니다.",
     tags=["인터뷰 (Interview)"],
 )
 async def generate_interview_questions(

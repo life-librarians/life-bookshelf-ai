@@ -23,6 +23,8 @@ router = APIRouter()
     "/api/v1/autobiographies/generate",
     dependencies=[Depends(AuthRequired())],
     response_model=AutobiographyGenerateResponseDto,
+    summary="자서전 생성",
+    description="유저의 정보와 챕터 정보, 인터뷰 대화 내역을 입력받아 자서전을 생성합니다.",
     tags=["자서전 (Autobiography)"],
 )
 async def generate_autobiography(

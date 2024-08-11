@@ -19,6 +19,8 @@ router = APIRouter()
     "/api/v1/chapters/generate_chapters",
     dependencies=[Depends(AuthRequired())],
     response_model=ChapterGenerateResponseDto,
+    summary="자서전 챕터 생성",
+    description="유저의 정보와 주제를 입력받아 자서전 챕터 정보를 생성합니다.",
     tags=["챕터 (Chapter)"],
 )
 async def generate_chapters(request: Request, requestDto: ChapterGenerateRequestDto):
