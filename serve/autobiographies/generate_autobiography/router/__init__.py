@@ -1,26 +1,37 @@
 import json
 
 from fastapi import APIRouter, HTTPException
+from fastapi.params import Depends
 from fastapi.responses import StreamingResponse
 from promptflow.core import Flow
+from pydantic_core import ValidationError
+from starlette.requests import Request
 
+from auth import MemberRole, get_current_user, AuthRequired
 from autobiographies.generate_autobiography.dto.request import (
     AutobiographyGenerateRequestDto,
 )
 from autobiographies.generate_autobiography.dto.response import (
     AutobiographyGenerateResponseDto,
 )
+from logger import logger
 
 router = APIRouter()
 
 
 @router.post(
     "/api/v1/autobiographies/generate",
+    dependencies=[Depends(AuthRequired())],
     response_model=AutobiographyGenerateResponseDto,
     tags=["자서전 (Autobiography)"],
 )
-def generate_autobiography(request: AutobiographyGenerateRequestDto):
+async def generate_autobiography(
+    request: Request,
+    requestDto: AutobiographyGenerateRequestDto,
+):
+    current_user = get_current_user(request)
     try:
+        logger.info(f"Generating autobiography for user {current_user.member_id}")
         # Collect the results as they are returned by the flow
         flow = Flow.load(
             "../flows/autobiographies/standard/generate_autobiography/flow.dag.yaml"
@@ -29,10 +40,10 @@ def generate_autobiography(request: AutobiographyGenerateRequestDto):
         # 스트리밍 제너레이터 함수 정의
         def stream_autobiography():
             for text in flow(
-                user_info=request.user_info,
-                chapter_info=request.chapter_info,
-                sub_chapter_info=request.sub_chapter_info,
-                interview_chat=request.interviews,
+                user_info=requestDto.user_info,
+                chapter_info=requestDto.chapter_info,
+                sub_chapter_info=requestDto.sub_chapter_info,
+                interview_chat=requestDto.interviews,
             ).get("autobiographical_text", []):
                 yield text
 
@@ -44,6 +55,9 @@ def generate_autobiography(request: AutobiographyGenerateRequestDto):
             status_code=500,
             detail="Failed to parse the autobiography generation result.",
         )
+
+    except ValidationError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
     except Exception as e:
         raise HTTPException(

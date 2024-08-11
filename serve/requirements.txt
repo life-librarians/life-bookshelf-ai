@@ -8,3 +8,7 @@ uvicorn
 pydantic
 
 openai
+
+jose
+python-jose
+starlette

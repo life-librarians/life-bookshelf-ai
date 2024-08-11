@@ -1,6 +1,10 @@
 import os
 
 from fastapi import FastAPI
+from promptflow.connections import AzureOpenAIConnection, OpenAIConnection
+from promptflow.client import PFClient
+from dotenv import load_dotenv
+
 from autobiographies.generate_autobiography.router import (
     router as autobiographies_generate_autobiography_router,
 )
@@ -16,11 +20,7 @@ from interviews.generate_interview_question.router import (
 from interviews.interview_chat.router import (
     router as interviews_request_interview_chat_router,
 )
-
-from promptflow.connections import AzureOpenAIConnection, OpenAIConnection
-from promptflow.client import PFClient
-
-from dotenv import load_dotenv
+from logger import logger
 
 load_dotenv()
 
@@ -46,7 +46,8 @@ def create_connection():
 
     pf = PFClient()
     conn = pf.connections.create_or_update(connection)
-    print(f"Successfully created connection {conn}")
+
+    logger.info(f"Successfully created connection {conn}")
 
 
 app = FastAPI(

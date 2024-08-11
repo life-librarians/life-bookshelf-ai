@@ -1,26 +1,33 @@
 import json
-from typing import List
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from promptflow.core import Flow
+from pydantic_core import ValidationError
+from starlette.requests import Request
 
+from auth import MemberRole, AuthRequired, get_current_user
 from interviews.generate_interview_question.dto.request import (
     InterviewQuestionGenerateRequestDto,
 )
 from interviews.generate_interview_question.dto.response import (
     InterviewQuestionGenerateResponseDto,
 )
+from logger import logger
 
 router = APIRouter()
 
 
 @router.post(
     "/api/v1/interviews/interview-questions",
+    dependencies=[Depends(AuthRequired())],
     response_model=InterviewQuestionGenerateResponseDto,
     tags=["인터뷰 (Interview)"],
 )
-def generate_interview_questions(request: InterviewQuestionGenerateRequestDto):
-    if request.user_info.user_name.strip() == "":
+async def generate_interview_questions(
+    request: Request, requestDto: InterviewQuestionGenerateRequestDto
+):
+    current_user = get_current_user(request)
+    if requestDto.user_info.user_name.strip() == "":
         raise HTTPException(
             status_code=400, detail="Name is required and cannot be empty."
         )
@@ -31,9 +38,9 @@ def generate_interview_questions(request: InterviewQuestionGenerateRequestDto):
             "../flows/interviews/standard/generate_inteview_questions/flow.dag.yaml"
         )
         chapters = flow(
-            user_info=request.user_info,
-            chapter_info=request.chapter_info,
-            sub_chapter_info=request.sub_chapter_info,
+            user_info=requestDto.user_info,
+            chapter_info=requestDto.chapter_info,
+            sub_chapter_info=requestDto.sub_chapter_info,
         )
 
         # Directly accumulate chapter content into the result string
@@ -49,6 +56,10 @@ def generate_interview_questions(request: InterviewQuestionGenerateRequestDto):
         raise HTTPException(
             status_code=500, detail="Failed to parse the chapter generation result."
         )
+
+    except ValidationError as e:
+        logger.error(f"Validation error occurred: {str(e)}")
+        raise HTTPException(status_code=400, detail=str(e))
 
     except Exception as e:
         raise HTTPException(
