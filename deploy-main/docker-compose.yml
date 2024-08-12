@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  server-main:
+    image: "211125363878.dkr.ecr.ap-northeast-2.amazonaws.com/lifebookshelf-ai:latest"
+    restart: always
+    container_name: "lifebookshelf-main"
+    ports:
+      - "3000:3000"
+    networks:
+      - lifebookshelf-ai-network
+
+networks:
+  lifebookshelf-ai-network:
+    driver: bridge
