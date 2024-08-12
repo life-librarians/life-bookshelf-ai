@@ -1,0 +1,105 @@
+description: "Travel Guide AI Autobiography Prompt Evaluation"
+
+prompts:
+  - promptExam.txt
+
+providers:
+  - id: "openai:gpt-3.5-turbo-16k"
+    config:
+      temperature: 0.4
+      apiKey: "**"
+
+variables:
+  user_name:
+    - "John Doe"
+    - "Jane Smith"
+    - "Alex Johnson"
+  borned_at:
+    - "1990-01-01"
+    - "1980-05-05"
+    - "1975-09-15"
+  gender:
+    - "male"
+    - "female"
+  has_children:
+    - "yes"
+    - "no"
+  theme:
+    - "childhood"
+    - "career"
+    - "special achievement"
+  limit: 3
+  question_limit: 3
+  chat_history:
+    - inputs:
+        question: "무엇에 대해 이야기하고 싶으신가요?"
+      outputs:
+        answer: "어린 시절에 대해 이야기하고 싶어요."
+  question: "8살 때 새로운 도시로 이사했어요."
+
+tests:
+  - vars:
+      user_name: "John Doe"
+      borned_at: "1990-01-01"
+      gender: "male"
+      has_children: "no"
+      theme: "childhood"
+    assert:
+      - type: javascript
+        value: Array.isArray(JSON.parse(output)) && JSON.parse(output).every(item => typeof item === 'string')
+      - type: javascript
+        value: JSON.parse(output).length >= 4
+      - type: javascript
+        value: JSON.parse(output).every(question => question.endsWith('?'))
+      - type: llm-rubric
+        value: |
+          점수를 매기세요 (1-5):
+          1. 질문들이 사용자의 배경 정보를 고려하고 있는가?
+          2. 질문들이 이전 대화 내용을 반영하고 있는가?
+          3. 질문들이 추가적인 정보를 얻는 데 도움이 되는가?
+          4. 질문들이 반복되지 않고 다양한가?
+          5. 질문들이 한국어로 적절하게 작성되었는가?
+
+  - vars:
+      user_name: "Jane Smith"
+      borned_at: "1980-05-05"
+      gender: "female"
+      has_children: "yes"
+      theme: "career"
+    assert:
+      - type: javascript
+        value: Array.isArray(JSON.parse(output)) && JSON.parse(output).every(item => typeof item === 'string')
+      - type: javascript
+        value: JSON.parse(output).length >= 4
+      - type: javascript
+        value: JSON.parse(output).every(question => question.endsWith('?'))
+      - type: llm-rubric
+        value: |
+          점수를 매기세요 (1-5):
+          1. 질문들이 사용자의 배경 정보를 고려하고 있는가?
+          2. 질문들이 이전 대화 내용을 반영하고 있는가?
+          3. 질문들이 추가적인 정보를 얻는 데 도움이 되는가?
+          4. 질문들이 반복되지 않고 다양한가?
+          5. 질문들이 한국어로 적절하게 작성되었는가?
+
+  - vars:
+      user_name: "Alex Johnson"
+      borned_at: "1975-09-15"
+      gender: "male"
+      has_children: "yes"
+      theme: "special achievement"
+    assert:
+      - type: javascript
+        value: Array.isArray(JSON.parse(output)) && JSON.parse(output).every(item => typeof item === 'string')
+      - type: javascript
+        value: JSON.parse(output).length >= 4
+      - type: javascript
+        value: JSON.parse(output).every(question => question.endsWith('?'))
+      - type: llm-rubric
+        value: |
+          점수를 매기세요 (1-5):
+          1. 질문들이 사용자의 배경 정보를 고려하고 있는가?
+          2. 질문들이 이전 대화 내용을 반영하고 있는가?
+          3. 질문들이 추가적인 정보를 얻는 데 도움이 되는가?
+          4. 질문들이 반복되지 않고 다양한가?
+          5. 질문들이 한국어로 적절하게 작성되었는가?

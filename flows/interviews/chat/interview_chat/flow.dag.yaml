@@ -29,10 +29,10 @@ inputs:
     description: 챗봇의 대화 기록
     is_chat_input: false
     is_chat_history: true
-  question:
+  theme:
     type: string
-    default: "[INIT]"
-    description: 사용자의 질문(챗봇의 질문에 대한 답변)
+    default: 임의의 주제로 대화를 진행합니다.
+    description: 대화의 주제
     is_chat_input: true
   question_limit:
     type: int
@@ -55,7 +55,7 @@ nodes:
       top_p: 1
       response_format:
         type: text
-      question: ${inputs.question}
+      theme: ${inputs.theme}
       user_name: ${inputs.user_name}
       borned_at: ${inputs.borned_at}
       gender: ${inputs.gender}
