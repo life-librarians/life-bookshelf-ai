@@ -14,7 +14,9 @@ from autobiographies.generate_autobiography.dto.request import (
 from autobiographies.generate_autobiography.dto.response import (
     AutobiographyGenerateResponseDto,
 )
-from logger import logger
+from logs import get_logger
+
+logger = get_logger()
 
 router = APIRouter()
 

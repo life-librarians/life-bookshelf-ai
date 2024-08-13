@@ -8,7 +8,9 @@ from pydantic import BaseModel
 from typing import Optional, List
 
 from constants import MemberRole
-from logger import logger
+from logs import get_logger
+
+logger = get_logger()
 
 # 애플리케이션 및 시크릿 키 설정
 app = FastAPI()

@@ -10,7 +10,9 @@ from chapters.generate_chapter.dto.request import ChapterGenerateRequestDto
 from chapters.generate_chapter.dto.response import (
     ChapterGenerateResponseDto,
 )
-from logger import logger
+from logs import get_logger
+
+logger = get_logger()
 
 router = APIRouter()
 

@@ -12,7 +12,9 @@ from interviews.generate_interview_question.dto.request import (
 from interviews.generate_interview_question.dto.response import (
     InterviewQuestionGenerateResponseDto,
 )
-from logger import logger
+from logs import get_logger
+
+logger = get_logger()
 
 router = APIRouter()
 

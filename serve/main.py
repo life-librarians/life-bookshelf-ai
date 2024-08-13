@@ -20,9 +20,12 @@ from interviews.generate_interview_question.router import (
 from interviews.interview_chat.router import (
     router as interviews_request_interview_chat_router,
 )
-from logger import logger
+
+from logs import get_logger
 
 load_dotenv()
+
+logger = get_logger()
 
 
 def create_connection():
@@ -50,6 +53,9 @@ def create_connection():
     logger.info(f"Successfully created connection {conn}")
 
 
+create_connection()
+
+
 app = FastAPI(
     description="Life Bookshelf AI API",
     version="0.0.1",
@@ -61,9 +67,8 @@ app.include_router(autobiographies_generate_chapter_router)
 app.include_router(interviews_generate_interview_question_router)
 app.include_router(interviews_request_interview_chat_router)
 
-if __name__ == "__main__":
-    create_connection()
 
+if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0", port=3000)

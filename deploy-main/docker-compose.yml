@@ -9,7 +9,8 @@ services:
       - "3000:3000"
     networks:
       - lifebookshelf-ai-network
-
+    volumes:
+      - $HOME/logs/:/logs/
 networks:
   lifebookshelf-ai-network:
     driver: bridge
