@@ -89,7 +89,6 @@ jobs:
           cd deploy-main
           aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin $REGISTRY
           docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --push .
-          rm -rf serve/
           rm -rf flows/
 
       - name: Upload deployment package to S3 and trigger CodeDeploy

@@ -11,6 +11,8 @@ services:
       - lifebookshelf-ai-network
     volumes:
       - $HOME/logs/:/logs/
+    env_file:
+      - serve/.env.production
 networks:
   lifebookshelf-ai-network:
     driver: bridge

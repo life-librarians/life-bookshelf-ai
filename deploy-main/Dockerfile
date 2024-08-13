@@ -12,4 +12,4 @@ COPY ./serve/ /app/serve/
 COPY ./flows/ /app/flows/
 
 # FastAPI 애플리케이션 실행
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000", "--env-file", ".env.production"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"]
