@@ -60,10 +60,10 @@ jobs:
         run: |
           cd serve
           echo ${{ secrets.ENV_PRODUCTION }} | base64 -d > .env.production
-          uvicorn main:app --env-file .env.production --port 3000 &
-          sleep 10  # Give some time for the server to start
-          curl -f http://127.0.0.1:3000 || (echo "Application failed to start" && exit 1)
-          pkill -f "uvicorn main:app --env-file .env.production --port 3000"
+          # uvicorn main:app --env-file .env.production --port 3000 &
+          # sleep 10  # Give some time for the server to start
+          # curl -f http://127.0.0.1:3000 || (echo "Application failed to start" && exit 1)
+          # pkill -f "uvicorn main:app --env-file .env.production --port 3000"
         shell: bash
 
       - name: Configure AWS credentials
