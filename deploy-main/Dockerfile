@@ -1,13 +1,15 @@
 FROM python:3.9
 
-WORKDIR /app
+RUN mkdir -p /app/serve/
 
-COPY serve/requirements.txt /app
+WORKDIR /app/serve/
 
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY serve/requirements.txt requirements.txt
 
-COPY ./serve/ /app
-COPY ./flows/ /app
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+COPY ./serve/ /app/serve/
+COPY ./flows/ /app/flows/
 
 # FastAPI 애플리케이션 실행
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000", "--env-file", ".env.production"]
