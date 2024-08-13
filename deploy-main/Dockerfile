@@ -6,7 +6,7 @@ WORKDIR /app/serve/
 
 COPY serve/requirements.txt requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt keyrings.alt
 
 COPY ./serve/ /app/serve/
 COPY ./flows/ /app/flows/
