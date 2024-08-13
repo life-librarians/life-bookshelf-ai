@@ -84,10 +84,11 @@ jobs:
           REPOSITORY: lifebookshelf-ai
           IMAGE_TAG: latest
         run: |
-          cp -r serve/ deploy-main/
+          cp -r serve/* deploy-main/
           cd deploy-main
           aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin $REGISTRY
           docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTRY/$REPOSITORY:$IMAGE_TAG --push .
+          cd ..
           rm -rf serve/
 
       - name: Upload deployment package to S3 and trigger CodeDeploy
