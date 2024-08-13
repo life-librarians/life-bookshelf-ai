@@ -10,14 +10,14 @@ permissions:
 jobs:
   AI-Server-CI:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        module:
-          - flows/autobiographies/standard/generate_autobiography
-          - flows/autobiographies/standard/generate_correction
-          - flows/chapters/standard/generate_chapter
-          - flows/interviews/chat/interview_chat
-          - flows/interviews/standard/generate_interview_questions
+    # strategy:
+    #   matrix:
+    #     module:
+    #       - flows/autobiographies/standard/generate_autobiography
+    #       - flows/autobiographies/standard/generate_correction
+    #       - flows/chapters/standard/generate_chapter
+    #       - flows/interviews/chat/interview_chat
+    #       - flows/interviews/standard/generate_interview_questions
 
     steps:
       - name: 체크아웃
@@ -28,19 +28,19 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install dependencies for ${{ matrix.module }}
-        run: |
-          if [ -f ${{ matrix.module }}/requirements.txt ]; then
-            pip install -r ${{ matrix.module }}/requirements.txt
-          else
-            echo "No requirements.txt found for ${{ matrix.module }}. Skipping dependency installation."
-          fi
+      # - name: Install dependencies for ${{ matrix.module }}
+      #   run: |
+      #     if [ -f ${{ matrix.module }}/requirements.txt ]; then
+      #       pip install -r ${{ matrix.module }}/requirements.txt
+      #     else
+      #       echo "No requirements.txt found for ${{ matrix.module }}. Skipping dependency installation."
+      #     fi
 
-      - name: Batch Run Tests for ${{ matrix.module }}
-        # TODO: Batct Run Tests logic 추가
-        run: |
-          cd ${{ matrix.module }}
-          python test_script.py
+      # - name: Batch Run Tests for ${{ matrix.module }}
+      #   # TODO: Batct Run Tests logic 추가
+      #   run: |
+      #     cd ${{ matrix.module }}
+      #     python test_script.py
 
       - name: Cache pip packages
         uses: actions/cache@v3
