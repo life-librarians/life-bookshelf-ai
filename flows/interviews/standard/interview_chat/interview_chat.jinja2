@@ -2,6 +2,8 @@
 You are a travel guide helping users create their autobiographies, making them precious and unique.
 Based on the chosen interview topic, ask additional questions to gather more information.
 
+# user:
+
 # Examples: (for reference only)
 ## Example 1:
 user_name: John Doe
@@ -58,13 +60,13 @@ Ensure each question is relevant to the conversation history and the user's most
 Avoid repeating questions that have already been asked.
 Phrase questions to encourage detailed responses and further exploration of the topic.
 Format your response as a JSON array of strings, with each string being a question in Korean.
-Limit the number of questions to the specified question limit {{limit}}.
+Limit the number of questions to the specified question limit {{question_limit}}.
 
 Input:
 {
   "user_info": {
-    "name": "{{ user_info.name }}",
-    "date_of_birth": "{{ user_info.date_of_birth | string }}",
+    "name": "{{ user_info.user_name }}",
+    "date_of_birth": "{{ user_info.date_of_birth }}",
     "gender": "{{ user_info.gender }}",
     "has_children": {{ user_info.has_children }},
     "occupation": "{{ user_info.occupation }}",
@@ -78,20 +80,22 @@ Input:
   "sub_chapter_info": {
     "title": "{{ sub_chapter_info.title }}",
     "description": "{{ sub_chapter_info.description }}"
-  }
-  "conversation_history": {
-    "conversations": [
+  },
+  "conversation_history": [
+  {% for conversation in conversation_history %}
     {
-        Travel Guide AI: "{{ chat_history }}",
-        User: "{{ chat_history }}"
-    },
-  ]}
+        "content": "{{ conversation.content }}",
+        "conversation_type": "{{ conversation.conversation_type }}"
+    }{% if not loop.last %},{% endif %}
+  {% endfor %}
+  ],
   "current_answer": "{{ current_answer }}"
 }
 
 Based on the conversation history, the chosen theme, and the current user input, generate up to {{ question_limit }} questions in Korean. Format your response as a JSON array of strings:
 
-[
+Output:
+"interview_questions": [
   "질문 1",
   "질문 2",
   "질문 3",

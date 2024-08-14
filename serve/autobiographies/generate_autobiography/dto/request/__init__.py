@@ -28,7 +28,7 @@ class InterviewContentDto(BaseModel):
     content: str = Field(
         default="회사에서 맡은 첫 프로젝트는 무엇이었고, 어떤 도전이 있었나요?"
     )
-    conversationType: ConversationType = Field(default=ConversationType.BOT)
+    conversation_type: ConversationType = Field(default=ConversationType.BOT)
 
 
 class AutobiographyGenerateRequestDto(BaseModel):
