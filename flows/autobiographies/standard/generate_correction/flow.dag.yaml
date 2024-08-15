@@ -11,23 +11,6 @@ outputs:
     type: list
     reference: ${generate_correction.output}
     description: 자서전 교정 결과
-    default: [
-      {
-        "original": "나는 20살때 처음으로 해외여행을 갔다.",
-        "corrected": "나는 20살 때 처음으로 해외여행을 갔다.",
-        "explanation": "'살'과 '때'는 띄어써야 합니다."
-      },
-      {
-        "original": "그것은 일본이였다.",
-        "corrected": "그곳은 일본이었다.",
-        "explanation": "'그것'보다는 '그곳'이 더 자연스럽고, '이였다'는 '이었다'로 써야 합니다."
-      },
-      {
-        "original": "귀국후 바로 학업에 열중해야 했기 때문에,",
-        "corrected": "귀국 후 바로 학업에 열중해야 했기 때문에,",
-        "explanation": "'귀국'과 '후'는 띄어써야 합니다."
-      }
-    ]
 
 nodes:
 - name: generate_correction
