@@ -1,0 +1,47 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+inputs:
+  modified_text:
+    type: string
+    default: "나는 20살때 처음으로 해외여행을 갔다. 그것은 일본이였다. 도쿄의 번화가를 걸으면서, 나는 한국과는 다른 문화를 직접 경험했다. 그때의 경험은 나에게 큰 영향을 주었고, 이후 나는 여행을 좋아하게 되었다. 하지만 귀국후 바로 학업에 열중해야 했기 때문에, 다음 여행은 한동안 미뤄야 했다."
+    description: 교정할 자서전 내용
+    is_chat_input: false
+
+outputs:
+  corrections:
+    type: list
+    reference: ${generate_correction.output}
+    description: 자서전 교정 결과
+    default: [
+      {
+        "original": "나는 20살때 처음으로 해외여행을 갔다.",
+        "corrected": "나는 20살 때 처음으로 해외여행을 갔다.",
+        "explanation": "'살'과 '때'는 띄어써야 합니다."
+      },
+      {
+        "original": "그것은 일본이였다.",
+        "corrected": "그곳은 일본이었다.",
+        "explanation": "'그것'보다는 '그곳'이 더 자연스럽고, '이였다'는 '이었다'로 써야 합니다."
+      },
+      {
+        "original": "귀국후 바로 학업에 열중해야 했기 때문에,",
+        "corrected": "귀국 후 바로 학업에 열중해야 했기 때문에,",
+        "explanation": "'귀국'과 '후'는 띄어써야 합니다."
+      }
+    ]
+
+nodes:
+- name: generate_correction
+  type: llm
+  source:
+    type: code
+    path: generate_correction.jinja2
+  inputs:
+    model: gpt-4o-mini
+    temperature: 0.4
+    top_p: 1
+    response_format:
+      type: json_object
+    modified_text: ${inputs.modified_text}
+  provider: OpenAI
+  connection: open_ai_connection
+  api: chat
