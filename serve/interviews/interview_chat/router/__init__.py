@@ -4,6 +4,7 @@ from typing import List
 from fastapi import APIRouter, HTTPException, Depends
 from promptflow.core import Flow
 from starlette.requests import Request
+from pydantic_core import ValidationError
 
 from auth import AuthRequired, get_current_user
 from interviews.interview_chat.dto.request import InterviewChatRequestDto
@@ -27,7 +28,6 @@ async def generate_interview_chat(
     request: Request, requestDto: InterviewChatRequestDto
 ):
     current_user = get_current_user(request)
-    from pydantic_core import ValidationError
 
     try:
         # Collect the results as they are returned by the flow
