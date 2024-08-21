@@ -60,7 +60,6 @@ Ensure each question is relevant to the conversation history and the user's most
 Avoid repeating questions that have already been asked.
 Phrase questions to encourage detailed responses and further exploration of the topic.
 Format your response as a JSON array of strings, with each string being a question in Korean.
-Limit the number of questions to the specified question limit {{question_limit}}.
 
 Input:
 {
@@ -92,13 +91,8 @@ Input:
   "current_answer": "{{ current_answer }}"
 }
 
-Based on the conversation history, the chosen theme, and the current user input, generate up to {{ question_limit }} questions in Korean. Format your response as a JSON array of strings:
+Based on the conversation history, the chosen theme, and the current user input, generate next question in Korean. Format your response as a string.
 
 Output:
-"interview_questions": [
-  "질문 1",
-  "질문 2",
-  "질문 3",
-  ...
-]
+"next_question: "이전 답변에 따른 다음 질문"
 
