@@ -12,7 +12,7 @@ inputs:
         is_chat_input: false
       date_of_birth:
         type: string
-        default: 2000-02-21
+        default: "2000-02-21"
         description: 사용자의 출생일
         is_chat_input: false
       gender:
@@ -42,7 +42,7 @@ inputs:
         is_chat_input: false
     default:
       user_name: 최시원
-      date_of_birth: 2000-02-21
+      date_of_birth: "2000-02-21"
       gender: FEMALE
       has_children: false
       occupation: 프로그래머
@@ -130,7 +130,7 @@ nodes:
     temperature: 0.4
     top_p: 1
     response_format:
-      type: json_object
+      type: text
     user_info: ${inputs.user_info}
     chapter_info: ${inputs.chapter_info}
     sub_chapter_info: ${inputs.sub_chapter_info}
