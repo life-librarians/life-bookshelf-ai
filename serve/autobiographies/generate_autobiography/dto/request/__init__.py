@@ -6,9 +6,10 @@ from constants import Gender, ConversationType
 
 
 class UserInfoDto(BaseModel):
-    name: str = Field(default="최시원")
+    user_name: str = Field(default="최시원")
     date_of_birth: date = Field(default="2000-02-21")
     gender: Gender = Field(default=Gender.FEMALE)
+    has_children: bool = Field(default=False)
     occupation: str = Field(default="프로그래머")
     education_level: str = Field(default="대학교 재학")
     marital_status: str = Field(default="미혼")
