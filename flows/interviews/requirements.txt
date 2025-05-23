@@ -1,0 +1,16 @@
+promptflow[azure]
+promptflow-tools
+python-dotenv
+
+# 추가분
+requests
+python-dotenv
+numpy
+langchain
+langchainhub
+langchain_community
+langchain-openai
+chromadb
+Flask
+pandas
+geopy
