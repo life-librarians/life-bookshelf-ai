@@ -6,7 +6,7 @@ from langchain_community.vectorstores import FAISS
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 file_path = os.path.join(BASE_DIR, 'data', 'split_documents.pkl')
 
-with open('data/split_documents.pkl', 'rb') as f:
+with open(file_path, 'rb') as f:
     split_documents = pickle.load(f)
 
 embeddings = OpenAIEmbeddings()
