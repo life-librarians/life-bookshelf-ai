@@ -1,0 +1,11 @@
+{"question":"What is your name?","answer":"My name is John Doe.","is_next":true}
+{"question":"How old are you?","answer":"I am 30 years old.","is_next":true}
+{"question":"How old are you?","answer":"I am 30 years old.","is_next":true}
+{"question":"What do you do for a living?","answer":"I am a software engineer.","is_next":true}
+{"question":"What are your hobbies?","answer":"I enjoy hiking and reading books.","is_next":true}
+{"question":"What is your favorite book?","answer":"My favorite book is 'To Kill a Mockingbird'.","is_next":true}
+{"question":"Do you have any pets?","answer":"Yes, I have a dog named Max.","is_next":true}
+{"question":"What is your favorite food?","answer":"I love Italian food, especially pasta.","is_next":true}
+{"question":"Where do you live?","answer":"I live in New York City.","is_next":true}
+{"question":"What is your favorite movie?","answer":"My favorite movie is 'Inception'.","is_next":true}
+{"question":"What is your dream job?","answer":"My dream job is to be a data scientist.","is_next":false}

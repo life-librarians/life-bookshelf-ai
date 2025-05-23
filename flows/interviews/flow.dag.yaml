@@ -1,0 +1,55 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+
+environment:
+  python_requirements_txt: requirements.txt
+
+inputs:
+  answer:
+    type: string
+    description: 사용자의 현재 응답
+  is_next:
+    type: boolean
+    description: 다음 질문을 생성할지 여부
+
+outputs:
+  question:
+    type: string
+    description: 생성된 다음 질문
+    reference: ${interview_chat.output.question}
+
+  is_next:
+    type: boolean
+    description: 다음 질문 여부 반환
+    reference: ${interview_chat.output.is_next}
+
+  is_over:
+    type: boolean
+    description: 인터뷰 종료 여부
+    reference: ${interview_chat.output.is_over}
+
+nodes:
+  - name: retriever
+    type: python
+    source:
+      type: code
+      path: retriever.py
+    inputs:
+      query: ${inputs.answer}
+
+  - name: interview_chat
+    type: llm
+    source:
+      type: code
+      path: interview_chat_prompt.jinja2
+    provider: OpenAI
+    connection: open_ai_connection
+    api: chat
+    inputs:
+      model: gpt-4o
+      temperature: 0.4
+      top_p: 1
+      response_format:
+        type: json  # JSON 형식으로 반환되도록 설정
+      answer: ${inputs.answer}
+      is_next: ${inputs.is_next}
+      context: ${retriever.output}
