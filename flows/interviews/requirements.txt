@@ -13,3 +13,4 @@ chromadb
 Flask
 pandas
 geopy
+faiss-cpu

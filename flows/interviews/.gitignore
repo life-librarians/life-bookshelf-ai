@@ -4,3 +4,4 @@ __pycache__/
 !.promptflow/flow.tools.json
 .runs/
 data/dummy_questions.csv
+data/split_documents.pkl
