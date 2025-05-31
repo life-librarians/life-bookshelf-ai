@@ -19,10 +19,8 @@ url = "http://localhost:3000/api/v1/autobiographies/generate"
 # 요청에 필요한 데이터
 data = {
     "user_info": {
-        "name": "최시원",
-        "date_of_birth": "2000-02-21",
+        "age": "2000-02-21",
         "gender": "FEMALE",
-        "occupation": "프로그래머",
         "education_level": "대학교 재학",
         "marital_status": "미혼",
     },

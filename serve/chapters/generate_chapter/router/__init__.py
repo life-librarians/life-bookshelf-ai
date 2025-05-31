@@ -38,14 +38,9 @@ async def generate_chapters(request: Request, requestDto: ChapterGenerateRequest
         flow = Flow.load("../flows/chapters/standard/generate_chapter/flow.dag.yaml")
         chapters = flow(
             gender=requestDto.gender,
-            occupation=requestDto.occupation,
-            user_name=requestDto.user_name,
-            date_of_birth=requestDto.date_of_birth,
-            has_children=requestDto.has_children,
+            age=requestDto.age,
             education_level=requestDto.education_level,
-            marital_status=requestDto.marital_status,
-            major_achievements=requestDto.major_achievements,
-            autobiography_theme=requestDto.autobiography_theme,
+            marital_status=requestDto.marital_status
         )
 
         # Directly accumulate chapter content into the result string

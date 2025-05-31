@@ -1,30 +1,15 @@
 environment:
   python_requirements_txt: requirements.txt
 inputs:
-  user_name:
+  age:
     type: string
-    default: 최시원
-    description: 사용자의 이름
-    is_chat_input: false
-  date_of_birth:
-    type: string
-    default: 2000-02-21
-    description: 사용자의 출생일
+    default: 20대
+    description: 사용자의 연령대
     is_chat_input: false
   gender:
     type: string
     default: FEMALE
     description: 사용자의 성별
-    is_chat_input: false
-  has_children:
-    type: string
-    default: no
-    description: 사용자의 자녀 여부 (yes/no)
-    is_chat_input: false
-  occupation:
-    type: string
-    default: 프로그래머
-    description: 사용자의 직업
     is_chat_input: false
   education_level:
     type: string
@@ -35,18 +20,6 @@ inputs:
     type: string
     default: 미혼
     description: 사용자의 결혼 여부
-    is_chat_input: false
-  major_achievements:
-    type: list
-    default:
-    - 졸업
-    - 취업
-    description: 사용자의 주요 성취
-    is_chat_input: false
-  autobiography_theme:
-    type: string
-    default: 인생사
-    description: 자서전의 주제
     is_chat_input: false
 outputs:
   chapter_timeline:
@@ -65,13 +38,8 @@ nodes:
     response_format:
       type: json_object
     gender: ${inputs.gender}
-    occupation: ${inputs.occupation}
-    user_name: ${inputs.user_name}
-    date_of_birth: ${inputs.date_of_birth}
-    has_children: ${inputs.has_children}
+    age: ${inputs.date_of_birth}
     education_level: ${inputs.education_level}
-    marital_status: ${inputs.marital_status}
-    major_achievements: ${inputs.major_achievements}
-    autobiography_theme: ${inputs.autobiography_theme}
+    marital_status: ${inputs.marital_status
   connection: open_ai_connection
   api: chat
