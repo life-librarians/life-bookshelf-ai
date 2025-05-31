@@ -8,14 +8,8 @@ from dotenv import load_dotenv
 from autobiographies.generate_autobiography.router import (
     router as autobiographies_generate_autobiography_router,
 )
-from autobiographies.generate_correction.router import (
-    router as autobiographies_generate_correction_router,
-)
 from chapters.generate_chapter.router import (
     router as autobiographies_generate_chapter_router,
-)
-from interviews.generate_interview_question.router import (
-    router as interviews_generate_interview_question_router,
 )
 from interviews.interview_chat.router import (
     router as interviews_request_interview_chat_router,
@@ -23,7 +17,7 @@ from interviews.interview_chat.router import (
 
 from logs import get_logger
 
-load_dotenv()
+load_dotenv(dotenv_path=".env.development")
 
 logger = get_logger()
 
@@ -62,9 +56,7 @@ app = FastAPI(
 )
 
 app.include_router(autobiographies_generate_autobiography_router)
-app.include_router(autobiographies_generate_correction_router)
 app.include_router(autobiographies_generate_chapter_router)
-app.include_router(interviews_generate_interview_question_router)
 app.include_router(interviews_request_interview_chat_router)
 
 

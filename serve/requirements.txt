@@ -12,3 +12,14 @@ openai
 jose
 python-jose
 starlette
+
+requests
+numpy
+langchain
+langchainhub
+langchain_community
+langchain-openai
+chromadb
+Flask
+pandas
+geopy

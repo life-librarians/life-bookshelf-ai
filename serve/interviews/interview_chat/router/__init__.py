@@ -3,11 +3,15 @@ import json
 from fastapi import APIRouter, HTTPException, Depends
 from starlette.requests import Request
 from pydantic_core import ValidationError
-from rag.chain import build_rag_chain
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
+from flows.interviews.rag.chain import build_rag_chain
 
 from auth import AuthRequired, get_current_user
-from interviews.interview_chat.dto.request import InterviewChatRequestDto
-from interviews.interview_chat.dto.response import GeneratedQuestionResponse
+from serve.interviews.interview_chat.dto.request import UserAnswerDto
+from serve.interviews.interview_chat.dto.response import GeneratedQuestionResponse
 from logs import get_logger
 
 logger = get_logger()
@@ -25,7 +29,7 @@ rag_with_history = build_rag_chain()
     tags=["인터뷰 (Interview)"],
 )
 async def generate_interview_chat_rag(
-    request: Request, requestDto: InterviewChatRequestDto
+    request: Request, requestDto: UserAnswerDto
 ):
     current_user = get_current_user(request)
 
