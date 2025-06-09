@@ -28,10 +28,6 @@ router = APIRouter()
 async def generate_chapters(request: Request, requestDto: ChapterGenerateRequestDto):
     current_user = get_current_user(request)
     logger.info(f"Current user: {current_user}")
-    if requestDto.user_name.strip() == "":
-        raise HTTPException(
-            status_code=400, detail="Name is required and cannot be empty."
-        )
 
     try:
         # Collect the results as they are returned by the flow

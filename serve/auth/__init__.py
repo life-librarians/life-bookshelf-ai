@@ -21,7 +21,10 @@ ALGORITHM = "HS256"
 class MemberSessionDto(BaseModel):
     member_id: int
     roles: List[MemberRole] = []
-
+    age_group: Optional[str] = None
+    gender: Optional[str] = None
+    education_level: Optional[str] = None
+    marital_status: Optional[str] = None
 
 class AuthRequired(HTTPBearer):
     def __init__(self, auto_error: bool = True):
@@ -72,7 +75,15 @@ def verify_token(token: str) -> MemberSessionDto:
                 detail="Member ID is missing",
                 headers={"WWW-Authenticate": "Bearer"},
             )
-        member_session_dto = MemberSessionDto(member_id=member_id, roles=roles)
+        # MemberSessionDto 반환
+        member_session_dto = MemberSessionDto(
+            member_id=member_id,
+            roles=roles,
+            # age_group=payload.get("age_group"),
+            # gender=payload.get("gender"),
+            # education_level=payload.get("education_level"),
+            # marital_status=payload.get("marital_status")
+        )
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

@@ -38,7 +38,7 @@ nodes:
     response_format:
       type: json_object
     gender: ${inputs.gender}
-    age: ${inputs.date_of_birth}
+    age: ${inputs.age}
     education_level: ${inputs.education_level}
     marital_status: ${inputs.marital_status
   connection: open_ai_connection

@@ -34,6 +34,7 @@ async def generate_autobiography(
     requestDto: AutobiographyGenerateRequestDto,
 ):
     current_user = get_current_user(request)
+    print("current_user:", current_user)
     try:
         logger.info(f"Generating autobiography for user {current_user.member_id}")
         # Collect the results as they are returned by the flow

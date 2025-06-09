@@ -1,25 +1,41 @@
-promptflow
-promptflow[azure]
-promptflow-tools
-python-dotenv
+# PromptFlow 및 Azure 연동 관련
+promptflow                  # Microsoft PromptFlow 메인 라이브러리
+promptflow[azure]           # Azure 연동 지원 (Azure OpenAI 등)
+promptflow-tools            # PromptFlow 관련 유틸리티 도구
 
-fastapi
-uvicorn
-pydantic
+# 환경 변수 및 설정 관리
+python-dotenv               # .env 파일 로드 및 환경 변수 설정 관리
 
-openai
+# Web Framework 및 API 서버
+fastapi                     # Python 기반 비동기 웹 프레임워크 (REST API)
+uvicorn                     # FastAPI용 ASGI 서버
+pydantic                    # 데이터 검증 및 직렬화 (FastAPI 모델링)
+starlette                   # FastAPI 하위의 비동기 웹 프레임워크 핵심 라이브러리
 
-jose
-python-jose
-starlette
+# 인증 및 보안
+jose                        # JSON Web Token (JWT) 및 암호화
+python-jose                 # JOSE 표준 기반 JWT 구현 라이브러리
 
-requests
-numpy
-langchain
-langchainhub
-langchain_community
-langchain-openai
-chromadb
-Flask
-pandas
-geopy
+# HTTP 요청 및 API 통신
+requests                    # HTTP 요청 라이브러리 (REST API 호출)
+
+# 데이터 및 수치 계산
+numpy                       # 수치 계산 및 배열 처리
+pandas                      # 데이터프레임 및 데이터 처리
+
+# 위치 기반 처리
+geopy                       # 지오코딩 및 거리 계산 등 위치 기반 처리
+
+# LangChain 및 LLM 관련
+langchain                   # LangChain 프레임워크 (LLM 애플리케이션 개발)
+langchainhub                # LangChainHub (프롬프트 및 체인 공유 플랫폼)
+langchain_community         # LangChain 커뮤니티 패키지
+langchain-openai            # LangChain과 OpenAI 연동
+chromadb                    # LangChain용 벡터DB (RAG 등)
+faiss-cpu                   # Facebook AI Similarity Search (FAISS) CPU 버전
+
+# 대화형 서버 및 경량 API
+Flask                       # 경량 웹 서버 (단순 API용)
+
+# Redis 및 세션 관리
+redis                       # 세션 상태 및 캐시 관리 (In-Memory 데이터 저장)

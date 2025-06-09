@@ -7,11 +7,7 @@ environment_variables:
   AZURE_OPENAI_API_BASE: ${open_ai_connection.api_base}
   AZURE_OPENAI_API_TYPE: azure
 column_mapping:
-  user_name: ${data.user_name}
-  date_of_birth: ${data.date_of_birth}
+  age: ${data.age}
   gender: ${data.gender}
-  has_children: ${data.has_children}
-  occupation: ${data.occupation}
   education_level: ${data.education_level}
   marital_status: ${data.marital_status}
-  major_achievements: ${data.major_achievements}
