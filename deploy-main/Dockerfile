@@ -11,5 +11,8 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt keyrings.alt
 COPY ./serve/ /app/serve/
 COPY ./flows/ /app/flows/
 
+# PYTHONPATH 환경변수 설정 → serve의 상위 경로
+ENV PYTHONPATH=/app
+
 # FastAPI 애플리케이션 실행
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000", "--reload"]
