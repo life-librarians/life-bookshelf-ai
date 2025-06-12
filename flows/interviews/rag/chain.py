@@ -12,7 +12,7 @@ import os
 ensure_split_documents()
 
 from .retriever import get_retriever
-from .prompt import initial_prompt, followup_prompt, dynamic_prompt
+from .prompt import initial_prompt, followup_prompt, subquestion_prompt
 from .llm import get_llm
 from .memory import get_session_history
 
@@ -63,7 +63,7 @@ def build_next_question_chain():
 def generate_sugestions_chain(parent_question, user_answer, context, user_profile):
     
     llm = get_llm()
-    dynamic_llm_chain = dynamic_prompt | llm
+    subquestion_prompt_llm_chain = subquestion_prompt | llm
     
     # input은 하나의 dict로 묶어서 넘겨야 합니다.
     input_data = {
@@ -76,7 +76,7 @@ def generate_sugestions_chain(parent_question, user_answer, context, user_profil
         "marital_status": user_profile["marital_status"]
     }
 
-    result = dynamic_llm_chain.invoke(input_data)
+    result = subquestion_prompt_llm_chain.invoke(input_data)
     
     json_str = re.sub(r'^```json\n|\n```$', '', result.content.strip())
     

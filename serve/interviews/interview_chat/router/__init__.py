@@ -2,6 +2,7 @@ import json
 import csv
 import traceback
 import redis
+import httpx
 
 from fastapi import APIRouter, HTTPException, Depends
 from starlette.requests import Request
@@ -15,6 +16,7 @@ from flows.interviews.rag.memory import get_session_history
 
 from auth import AuthRequired, get_current_user
 from serve.interviews.interview_chat.dto.request import UserAnswerDto
+from serve.api.interviews.interview_chat import save_qa_to_main_server, update_current_subtopic, trigger_autobiography_generation
 from serve.interviews.interview_chat.dto.response import GeneratedQuestionResponse
 from logs import get_logger
 
@@ -37,6 +39,7 @@ def save_progress(session_id, progress):
 async def generate_interview_chat_rag(request: Request, requestDto: UserAnswerDto):
     current_user = get_current_user(request)
     session_id = f"user-{current_user.member_id}"
+    access_token = request.headers.get("Authorization").split(" ")[1]
 
     try:
         progress = load_progress(session_id)
@@ -73,6 +76,14 @@ async def generate_interview_chat_rag(request: Request, requestDto: UserAnswerDt
             title, subtitle, subtopic = detect_topic_subtopic(user_answer, user_profile, chat_history)
             progress["current"] = {"title": title, "subtitle": subtitle, "subtopic": subtopic}
             progress["subtopic_finished"] = False
+            
+            # sub topic 감지 후 변경 요청
+            await update_current_subtopic(
+                title=title,
+                subtitle=subtitle,
+                subtopic=subtopic,
+                access_token=access_token
+            )
 
         else:
             title = progress["current"].get("title")
@@ -139,6 +150,38 @@ async def generate_interview_chat_rag(request: Request, requestDto: UserAnswerDt
         if not pending:
             progress["subtopic_finished"] = True
 
+            # 모든 subtopic이 종료됐는지 검사
+            all_subtopics = progress.get("chapters", {}).get(title, {}).get(subtitle, {})
+            finished = True
+            for sub_k in all_subtopics:
+                key = f"{title}::{subtitle}::{sub_k}"
+                if not progress["subtopic_subquestions"].get(key):
+                    finished = False
+                elif not progress["subtopic_finished"]:
+                    finished = False
+
+            if finished:
+                await trigger_autobiography_generation(
+                    title=title,
+                    subtitle=subtitle,
+                    chapters=all_subtopics,
+                    access_token=access_token
+                )
+
+            # 자서전 트리거 후 진행 상태 초기화 or 마무리 멘트
+            progress["last_question"] = "우리 제일 최근에 {}에 대해서 이야기했었지. 오늘은 무슨 얘기를 해볼까?".format(subtopic)
+            save_progress(session_id, progress)
+
+            return GeneratedQuestionResponse(
+                title=title,
+                subtitle=subtitle,
+                subtopic=subtopic,
+                response="오늘의 이야기는 끝이야 ! 우리 내일 다시 만나자 !",
+                question=progress["last_question"],
+                is_next=True,
+                is_over=True 
+            )
+
         progress["current"] = {"title": title, "subtitle": subtitle, "subtopic": subtopic}
         chapters = progress.get("chapters", {})
         chapters.setdefault(title, {}).setdefault(subtitle, {}).setdefault(subtopic, [])
@@ -146,6 +189,17 @@ async def generate_interview_chat_rag(request: Request, requestDto: UserAnswerDt
             "Q": progress.get("last_question"),
             "A": user_answer
         })
+        
+        # 질문 답변 저장 요청
+        await save_qa_to_main_server(
+            title=title,
+            subtitle=subtitle,
+            subtopic=subtopic,
+            question=progress.get("last_question"),
+            answer=user_answer,
+            access_token=access_token
+        )
+        
         progress["chapters"] = chapters
         progress["last_question"] = next_q
         save_progress(session_id, progress)
