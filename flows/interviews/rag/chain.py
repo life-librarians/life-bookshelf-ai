@@ -34,9 +34,9 @@ def build_next_question_chain():
     # 전체 체인 구성 (RunnableSequence 사용)
     chain = (
         {
-            "context": itemgetter("answer") | retriever,
+            "answer": itemgetter("answer"),
+            "context": itemgetter("context") | retriever,
             "chat_history": itemgetter("chat_history"),
-            "is_first": itemgetter("is_first"),
             "title": itemgetter("title"),  # 추가
             "subtitle": itemgetter("subtitle"),  # 추가
             "subtopic": itemgetter("subtopic"),
@@ -111,4 +111,9 @@ def detect_topic_subtopic(user_answer, user_profile, chat_history):
     parsed = json.loads(json_str)
     
     # 주제 및 하위 주제 추출
-    return parsed.get("title"), parsed.get("subtitle"), parsed.get("subtopic")
+    return (
+        parsed.get("title"),
+        parsed.get("subtitle"),
+        parsed.get("subtopic"),
+        parsed.get("subtopics", [parsed.get("subtopic")])  # 전체 목록, 없으면 단일 subtopic 하나라도 반환
+    )

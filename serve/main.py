@@ -3,6 +3,8 @@ import os
 from fastapi import FastAPI
 from promptflow.connections import AzureOpenAIConnection, OpenAIConnection
 from promptflow.client import PFClient
+from fastapi.middleware.cors import CORSMiddleware
+
 from dotenv import load_dotenv
 
 from autobiographies.generate_autobiography.router import (
@@ -53,6 +55,22 @@ create_connection()
 app = FastAPI(
     description="Life Bookshelf AI API",
     version="0.0.1",
+    docs_url="/docs",
+    root_path="/ai"
+)
+
+origins = [
+    "http://localhost:8080",  # MagicMirror 클라이언트 주소
+    "http://127.0.0.1:8080",
+    "http://10.165.145.241:8080"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 또는 ["*"]로 전체 허용 (개발용)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(autobiographies_generate_autobiography_router)

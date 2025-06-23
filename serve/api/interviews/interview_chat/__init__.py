@@ -3,25 +3,44 @@ from logs import get_logger
 
 logger = get_logger()
 
-async def save_qa_to_main_server(title, subtitle, subtopic, question, answer, access_token: str):
+# 질문과 답변 데이터 저장
+async def save_qa_to_main_server(question, answer, access_token: str):
     async with httpx.AsyncClient() as client:
+        # Question (BOT)
         await client.post(
-            "http://main-server.internal/api/v1/interviews/save-qa",
+            "https://v2.lifebookshelf.org/main/api/v1/interviews/conversations",
             headers={"Authorization": f"Bearer {access_token}"},
             json={
-                "title": title,
-                "subtitle": subtitle,
-                "subtopic": subtopic,
-                "question": question,
-                "answer": answer
+                "conversations": [
+                    {
+                        "content": question,
+                        "conversationType": "BOT"
+                    }
+                ]
             },
             timeout=5.0
         )
 
+        # Answer (HUMAN)
+        await client.post(
+            "https://v2.lifebookshelf.org/main/api/v1/interviews/conversations",
+            headers={"Authorization": f"Bearer {access_token}"},
+            json={
+                "conversations": [
+                    {
+                        "content": answer,
+                        "conversationType": "HUMAN"
+                    }
+                ]
+            },
+            timeout=5.0
+        )
+
+# 최신 sub topic 업데이트
 async def update_current_subtopic(title, subtitle, subtopic, access_token: str):
     async with httpx.AsyncClient() as client:
         await client.post(
-            "http://main-server.internal/api/v1/interviews/current-subtopic",
+            "https://v2.lifebookshelf.org/main/api/v1/interviews/current-chapter",
             headers={"Authorization": f"Bearer {access_token}"},
             json={
                 "title": title,
@@ -29,17 +48,4 @@ async def update_current_subtopic(title, subtitle, subtopic, access_token: str):
                 "subtopic": subtopic
             },
             timeout=3.0
-        )
-
-async def trigger_autobiography_generation(title, subtitle, chapters, access_token: str):
-    async with httpx.AsyncClient() as client:
-        await client.post(
-            "http://ai-server.internal:3000/generate-autobiography",
-            headers={"Authorization": f"Bearer {access_token}"},
-            json={
-                "title": title,
-                "subtitle": subtitle,
-                "chapters": chapters
-            },
-            timeout=10.0
         )

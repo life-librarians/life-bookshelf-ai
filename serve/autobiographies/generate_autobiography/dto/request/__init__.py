@@ -14,12 +14,8 @@ class UserInfoDto(BaseModel):
 
 class ChapterInfoDto(BaseModel):
     title: str = Field(default="20대")
-    description: str = Field(default="대학 생활과 첫 직장 경험")
-
-
-class SubChapterInfoDto(BaseModel):
-    title: str = Field(default="첫 직장 생활")
-    description: str = Field(default="소프트웨어 회사에서의 첫 직장 경험과 적응 과정")
+    sub_title: str = Field(default="대학 생활과 첫 직장 경험")
+    sub_topic: str = Field(default="대학 생활과 첫 직장 경험에 대한 이야기")
 
 
 class InterviewContentDto(BaseModel):
@@ -32,7 +28,6 @@ class InterviewContentDto(BaseModel):
 class AutobiographyGenerateRequestDto(BaseModel):
     user_info: UserInfoDto
     chapter_info: ChapterInfoDto
-    sub_chapter_info: SubChapterInfoDto
     interviews: List[InterviewContentDto] = Field(
         default=[
             InterviewContentDto(),

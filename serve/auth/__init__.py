@@ -2,6 +2,7 @@ import os
 from starlette.requests import Request
 
 from fastapi import FastAPI, HTTPException, status
+from fastapi.responses import JSONResponse
 from fastapi.security import HTTPBearer
 from jose import JWTError, jwt
 from pydantic import BaseModel
@@ -13,10 +14,8 @@ from logs import get_logger
 logger = get_logger()
 
 # 애플리케이션 및 시크릿 키 설정
-app = FastAPI()
 SECRET_KEY = os.environ.get("LIFE_BOOKSHELF_AI_JWT_SECRET_KEY")
 ALGORITHM = "HS256"
-
 
 class MemberSessionDto(BaseModel):
     member_id: int
